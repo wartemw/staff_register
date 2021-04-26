@@ -1,5 +1,8 @@
 package ru.wartemw.staff_register.entity;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.util.Date;
 
 /*
@@ -16,6 +19,7 @@ import java.util.Date;
 банковсткая организация         String      banking_organization
 статус архивности               boolean     archival_status
  */
+@Data
 public class Worker {
     private String surname;                 // Фамилия
     private String name;                    // Имя
