@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="ru.wartemw.staff_register.build_service.model.impl.Banking_organizationModelImpl">
+		<attributes>
+			<id name="banking_organizationID" />
+			<basic name="name" />
+			<basic name="identification_code" />
+			<basic name="address" />
+			<basic name="workerID" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="ru.wartemw.staff_register.build_service.model.impl.Position_directoryModelImpl">
+		<attributes>
+			<id name="position_directoryID" />
+			<basic name="name" />
+			<basic name="archival_status" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="ru.wartemw.staff_register.build_service.model.impl.WorkerModelImpl">
+		<attributes>
+			<id name="workerID" />
+			<basic name="surname" />
+			<basic name="name" />
+			<basic name="patronymic" />
+			<basic name="gender" />
+			<basic name="date_of_birth">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="date_of_employment">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="salary_level" />
+			<basic name="work_number" />
+			<basic name="telephone_number" />
+			<basic name="archival_status" />
+			<basic name="position_directoryID" />
+			<basic name="banking_organizationID" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="ru.wartemw.staff_register.build_service.model.impl.Banking_organizationImpl" name="Banking_organization">
+		<table name="staff_register_Banking_organization" />
+		<attributes />
+	</entity>
+	<entity class="ru.wartemw.staff_register.build_service.model.impl.Position_directoryImpl" name="Position_directory">
+		<table name="staff_register_Position_directory" />
+		<attributes />
+	</entity>
+	<entity class="ru.wartemw.staff_register.build_service.model.impl.WorkerImpl" name="Worker">
+		<table name="staff_register_Worker" />
+		<attributes />
+	</entity>
+</entity-mappings>

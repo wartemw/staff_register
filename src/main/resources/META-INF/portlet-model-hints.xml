@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="ru.wartemw.staff_register.build_service.model.Banking_organization">
+		<field name="banking_organizationID" type="long" />
+		<field name="name" type="String" />
+		<field name="identification_code" type="int" />
+		<field name="address" type="String" />
+		<field name="workerID" type="long" />
+	</model>
+	<model name="ru.wartemw.staff_register.build_service.model.Position_directory">
+		<field name="position_directoryID" type="long" />
+		<field name="name" type="String" />
+		<field name="archival_status" type="boolean" />
+	</model>
+	<model name="ru.wartemw.staff_register.build_service.model.Worker">
+		<field name="workerID" type="long" />
+		<field name="surname" type="String" />
+		<field name="name" type="String" />
+		<field name="patronymic" type="String" />
+		<field name="gender" type="String" />
+		<field name="date_of_birth" type="Date" />
+		<field name="date_of_employment" type="Date" />
+		<field name="salary_level" type="long" />
+		<field name="work_number" type="long" />
+		<field name="telephone_number" type="long" />
+		<field name="archival_status" type="boolean" />
+		<field name="position_directoryID" type="long" />
+		<field name="banking_organizationID" type="long" />
+	</model>
+</model-hints>

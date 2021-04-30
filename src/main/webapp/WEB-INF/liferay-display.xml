@@ -3,6 +3,8 @@
 
 <display>
 	<category name="Мои партлеты wartemw">
-		<portlet id="staff_register" />
+		<portlet id="workerPortlet" />
+		<portlet id="position_directoryPortlet" />
+		<portlet id="banking_organizationPortlet" />
 	</category>
 </display>

@@ -32,9 +32,9 @@
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
-						<goals>
+						<!--<goals>
 							<goal>build-css</goal>
-						</goals>
+						</goals>-->
 					</execution>
 				</executions>
 				<configuration>
@@ -44,6 +44,7 @@
 					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
 					<liferayVersion>${liferay.version}</liferayVersion>
 					<pluginType>portlet</pluginType>
+					<pluginName>${project.artifactId}-${project.version}</pluginName>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -113,5 +114,6 @@
 			<version>1.18.20</version>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 </project>

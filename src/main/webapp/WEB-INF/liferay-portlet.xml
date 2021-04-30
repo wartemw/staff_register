@@ -3,11 +3,27 @@
 
 <liferay-portlet-app>
 	<portlet>
-		<portlet-name>staff_register</portlet-name>
+		<portlet-name>workerPortlet</portlet-name>
 		<icon>/icon.png</icon>
 		<header-portlet-css>/css/main.css</header-portlet-css>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 	</portlet>
+
+	<portlet>
+		<portlet-name>position_directoryPortlet</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+	</portlet>
+
+	<portlet>
+		<portlet-name>banking_organizationPortlet</portlet-name>
+		<icon>/icon.png</icon>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
+	</portlet>
+
+
 	<role-mapper>
 		<role-name>administrator</role-name>
 		<role-link>Administrator</role-link>

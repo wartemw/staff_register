@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="ru.wartemw.staff_register.build_service.service.Banking_organizationLocalService" class="ru.wartemw.staff_register.build_service.service.impl.Banking_organizationLocalServiceImpl" />
+	<bean id="ru.wartemw.staff_register.build_service.service.persistence.Banking_organizationPersistence" class="ru.wartemw.staff_register.build_service.service.persistence.Banking_organizationPersistenceImpl" parent="basePersistence" />
+	<bean id="ru.wartemw.staff_register.build_service.service.Position_directoryLocalService" class="ru.wartemw.staff_register.build_service.service.impl.Position_directoryLocalServiceImpl" />
+	<bean id="ru.wartemw.staff_register.build_service.service.persistence.Position_directoryPersistence" class="ru.wartemw.staff_register.build_service.service.persistence.Position_directoryPersistenceImpl" parent="basePersistence" />
+	<bean id="ru.wartemw.staff_register.build_service.service.WorkerLocalService" class="ru.wartemw.staff_register.build_service.service.impl.WorkerLocalServiceImpl" />
+	<bean id="ru.wartemw.staff_register.build_service.service.persistence.WorkerPersistence" class="ru.wartemw.staff_register.build_service.service.persistence.WorkerPersistenceImpl" parent="basePersistence" />
+</beans>

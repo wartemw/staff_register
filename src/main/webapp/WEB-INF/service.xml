@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN"
+        "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+<service-builder package-path="ru.wartemw.staff_register.build_service">
+    <author>wARTEMw</author>
+    <namespace>staff_register</namespace>
+    <entity name="Worker" local-service="true" remote-service="false">
+
+        <column name="workerID" type="long" primary="true"/>
+
+        <column name="surname" type="String"/>
+        <column name="name" type="String"/>
+        <column name="patronymic" type="String"/>
+        <column name="gender" type="String" />
+        <column name="date_of_birth" type="Date"/>
+        <column name="date_of_employment" type="Date"/>
+        <column name="salary_level" type="long"/>
+        <column name="work_number" type="long"/>
+        <column name="telephone_number" type="long"/>
+        <column name="archival_status" type="boolean"/>
+
+        <column name="position_directoryID" type="long"/>
+        <column name="banking_organizationID" type="long"/>
+
+        <finder name="Position_directoryId" return-type="Position_directory">
+            <finder-column name="position_directoryID" />
+        </finder>
+
+        <finder name="Banking_organizationId" return-type="Banking_organization">
+            <finder-column name="banking_organizationID" />
+        </finder>
+
+    </entity>
+    <entity name="Banking_organization" local-service="true" remote-service="false">
+
+        <column name="banking_organizationID" type="long" primary="true"/>
+
+        <column name="name" type="String"/>
+        <column name="identification_code" type="int"/>
+        <column name="address" type="String"/>
+
+        <column name="workerID" type="long"/>
+
+        <finder name="workerID" return-type="Collection">
+            <finder-column name="workerID" />
+        </finder>
+    </entity>
+
+    <entity name="Position_directory" local-service="true" remote-service="false">
+
+        <column name="position_directoryID" type="long" primary="true"/>
+
+        <column name="name" type="String"/>
+        <column name="archival_status" type="boolean"/>
+    </entity>
+</service-builder>
