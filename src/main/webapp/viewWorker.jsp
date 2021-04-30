@@ -58,18 +58,6 @@
     if (sortedFIO) {
         List<Worker> workerSortList = new ArrayList<Worker>();
 
-        /*String[] vioSplit = vio.split(" ");
-        if (vioSplit.length == 1) {
-
-        }else if(vioSplit.length == 2) {
-
-        }else if (vioSplit.length == 3) {
-
-        }*/
-/*        String surname = vioSplit[0];
-        String name = vioSplit[1];
-        String patronymic = vioSplit[2];*/
-
         for (Worker worker : workerArrayList) {
             if (worker.getSurname().toLowerCase().contains(vio.toLowerCase())
                     || worker.getName().toLowerCase().contains(vio.toLowerCase())
@@ -100,14 +88,14 @@
         </portlet:renderURL>
 
         <aui:form action="<%=viewWorkerURL%>" name="<portlet:namespace />fm">
-            <p>Фильтр по по дате рождения</p>
+            <p>Фильтр по дате рождения</p>
             <aui:input type="hidden" name="sorted" value="true"/>
             <aui:input name="date_of_birthIn" label="от" inlineLabel="left" class="aui-date-picker"
                        type="date" value="<%=date_of_birthInString%>"/>
             <aui:input name="date_of_birthTo" label="до" inlineLabel="left" class="aui-date-picker"
                        type="date" value="<%=date_of_birthToString%>"/>
 
-            <aui:button id="sortButton" type="submit" value="Сортировать"/>
+            <aui:button id="sortButton" type="submit" value="применить фильтр"/>
         </aui:form>
 
     </aui:column>
@@ -118,11 +106,11 @@
         </portlet:renderURL>
 
         <aui:form action="<%=viewWorkerURL%>" name="<portlet:namespace />fm">
-            <p>Фильтр по по дате рождения</p>
+            <p>Фильтр по ФИО</p>
             <aui:input type="hidden" name="sortedFIO" value="true"/>
             <aui:input name="vio" label="ФИО" inlineLabel="left" value="<%=vio%>"/>
 
-            <aui:button id="sortButton" type="submit" value="Сортировать"/>
+            <aui:button id="sortButton" type="submit" value="применить фильтр"/>
         </aui:form>
 
     </aui:column>
