@@ -58,6 +58,10 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
     private String[] _methodParameterTypes24;
     private String _methodName25;
     private String[] _methodParameterTypes25;
+    private String _methodName26;
+    private String[] _methodParameterTypes26;
+    private String _methodName27;
+    private String[] _methodParameterTypes27;
 
     public WorkerLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -187,6 +191,16 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
                 "java.lang.String", "java.lang.String", "java.util.Date", "long",
                 "java.util.Date", "long", "long", "long", "long", "boolean"
             };
+
+        _methodName26 = "filterByDate";
+
+        _methodParameterTypes26 = new String[] {
+                "java.util.Date", "java.util.Date"
+            };
+
+        _methodName27 = "filterByName";
+
+        _methodParameterTypes27 = new String[] { "java.lang.String" };
     }
 
     @Override
@@ -917,5 +931,55 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
         }
 
         return (ru.wartemw.staff_register.build_service.model.Worker) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByDate(
+        java.util.Date date_of_birthIn, java.util.Date date_of_birthTo) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
+                    new Object[] {
+                        ClpSerializer.translateInput(date_of_birthIn),
+                        
+                    ClpSerializer.translateInput(date_of_birthTo)
+                    });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<ru.wartemw.staff_register.build_service.model.Worker>) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
+        java.lang.String name) {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName27,
+                    _methodParameterTypes27,
+                    new Object[] { ClpSerializer.translateInput(name) });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<ru.wartemw.staff_register.build_service.model.Worker>) ClpSerializer.translateOutput(returnObj);
     }
 }

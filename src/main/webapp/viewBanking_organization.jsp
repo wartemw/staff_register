@@ -1,13 +1,16 @@
 <%@ page import="com.liferay.portal.kernel.util.StringPool" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.text.DateFormat" %>
+<%@ page import="ru.wartemw.staff_register.build_service.service.Banking_organizationLocalServiceUtil" %>
+<%@ page import="ru.wartemw.staff_register.build_service.model.Banking_organization" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
 <%@ taglib uri="http://alloy.liferay.com/tld/aui" prefix="aui" %>
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <portlet:defineObjects/>
 
-<jsp:useBean id="banking_organizationList" class="java.util.ArrayList" scope="request"/>
+<% List<Banking_organization> banking_organizationList = Banking_organizationLocalServiceUtil.getBanking_organizationList(); %>
 
 <aui:button-row cssClass="guestbook-buttons">
 

@@ -327,6 +327,18 @@ public class WorkerLocalServiceWrapper implements WorkerLocalService,
             archival_status);
     }
 
+    @Override
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByDate(
+        java.util.Date date_of_birthIn, java.util.Date date_of_birthTo) {
+        return _workerLocalService.filterByDate(date_of_birthIn, date_of_birthTo);
+    }
+
+    @Override
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
+        java.lang.String name) {
+        return _workerLocalService.filterByName(name);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

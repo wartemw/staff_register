@@ -76,6 +76,7 @@ public class WorkerPortlet extends MVCPortlet {
         request.setAttribute("workerIdList", workerSortList);
     }
 
+
     public void deleteWorker(ActionRequest request, ActionResponse response) {
         long workerID = ParamUtil.getLong(request, "workerID");
         try {

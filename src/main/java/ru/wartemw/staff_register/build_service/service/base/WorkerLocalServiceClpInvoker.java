@@ -63,6 +63,10 @@ public class WorkerLocalServiceClpInvoker {
     private String[] _methodParameterTypes53;
     private String _methodName54;
     private String[] _methodParameterTypes54;
+    private String _methodName55;
+    private String[] _methodParameterTypes55;
+    private String _methodName56;
+    private String[] _methodParameterTypes56;
 
     public WorkerLocalServiceClpInvoker() {
         _methodName0 = "addWorker";
@@ -198,6 +202,16 @@ public class WorkerLocalServiceClpInvoker {
                 "java.lang.String", "java.lang.String", "java.util.Date", "long",
                 "java.util.Date", "long", "long", "long", "long", "boolean"
             };
+
+        _methodName55 = "filterByDate";
+
+        _methodParameterTypes55 = new String[] {
+                "java.util.Date", "java.util.Date"
+            };
+
+        _methodName56 = "filterByName";
+
+        _methodParameterTypes56 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -365,6 +379,17 @@ public class WorkerLocalServiceClpInvoker {
                 ((Long) arguments[10]).longValue(),
                 ((Long) arguments[11]).longValue(),
                 ((Boolean) arguments[12]).booleanValue());
+        }
+
+        if (_methodName55.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
+            return WorkerLocalServiceUtil.filterByDate((java.util.Date) arguments[0],
+                (java.util.Date) arguments[1]);
+        }
+
+        if (_methodName56.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
+            return WorkerLocalServiceUtil.filterByName((java.lang.String) arguments[0]);
         }
 
         throw new UnsupportedOperationException();

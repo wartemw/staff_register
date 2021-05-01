@@ -11,9 +11,8 @@
 <%@ taglib uri="http://alloy.liferay.com/tld/aui" prefix="aui" %>
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <portlet:defineObjects/>
-<%
-    List<Position_directory> position_directoryList = Position_directoryLocalServiceUtil.getPosition_directoryList();
-%>
+
+<% List<Position_directory> position_directoryList = Position_directoryLocalServiceUtil.getPosition_directoryList(); %>
 
 <aui:button-row cssClass="guestbook-buttons">
 

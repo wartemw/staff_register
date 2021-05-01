@@ -272,4 +272,10 @@ public interface WorkerLocalService extends BaseLocalService,
         java.util.Date date_of_employment, long salary_level, long work_number,
         long telephone_number, long banking_organization,
         boolean archival_status);
+
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByDate(
+        java.util.Date date_of_birthIn, java.util.Date date_of_birthTo);
+
+    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
+        java.lang.String name);
 }

@@ -314,6 +314,16 @@ public class WorkerLocalServiceUtil {
             work_number, telephone_number, banking_organization, archival_status);
     }
 
+    public static java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByDate(
+        java.util.Date date_of_birthIn, java.util.Date date_of_birthTo) {
+        return getService().filterByDate(date_of_birthIn, date_of_birthTo);
+    }
+
+    public static java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
+        java.lang.String name) {
+        return getService().filterByName(name);
+    }
+
     public static void clearService() {
         _service = null;
     }

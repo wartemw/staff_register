@@ -168,4 +168,38 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
         }
         return createEntity();
     }
+
+    public List<Worker> filterByDate(Date date_of_birthIn, Date date_of_birthTo) {
+        List<Worker> workerList = getWorkerList();
+
+        List<Worker> resultList = new ArrayList<Worker>();
+
+        for (Worker worker : workerList) {
+            Date date_of_birth = worker.getDate_of_birth();
+
+            if (date_of_birth.after(date_of_birthIn) && date_of_birth.before(date_of_birthTo))
+                resultList.add(worker);
+
+            if (date_of_birth.equals(date_of_birthIn) || date_of_birth.equals(date_of_birthTo))
+                resultList.add(worker);
+        }
+
+        return resultList;
+    }
+
+    public List<Worker> filterByName(String name) {
+        List<Worker> workerList = WorkerLocalServiceUtil.getWorkerList();
+
+        List<Worker> resultList = new ArrayList<Worker>();
+
+        for (Worker worker : workerList) {
+            if (worker.getSurname().toLowerCase().contains(name.toLowerCase())
+                    || worker.getName().toLowerCase().contains(name.toLowerCase())
+                    || worker.getPatronymic().toLowerCase().contains(name.toLowerCase())) {
+                resultList.add(worker);
+            }
+        }
+
+        return resultList;
+    }
 }

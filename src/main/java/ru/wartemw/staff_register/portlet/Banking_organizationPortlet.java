@@ -4,29 +4,14 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.util.bridges.mvc.MVCPortlet;
-import ru.wartemw.staff_register.build_service.model.Banking_organization;
 import ru.wartemw.staff_register.build_service.service.Banking_organizationLocalServiceUtil;
 
-import javax.portlet.*;
-import java.io.IOException;
-import java.util.ArrayList;
+import javax.portlet.ActionRequest;
+import javax.portlet.ActionResponse;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Banking_organizationPortlet extends MVCPortlet {
-    @Override
-    public void render(RenderRequest renderRequest, RenderResponse renderResponse)
-            throws PortletException, IOException {
-
-        ArrayList<Banking_organization> banking_organizationList = new ArrayList<Banking_organization>();
-        banking_organizationList.addAll(Banking_organizationLocalServiceUtil.getBanking_organizationList());
-
-        if (!banking_organizationList.isEmpty())
-            renderRequest.setAttribute("banking_organizationList", banking_organizationList);
-
-        super.render(renderRequest, renderResponse);
-
-    }
 
     public void editBanking_organization(ActionRequest request, ActionResponse response) {
 
