@@ -8,6 +8,8 @@ import ru.wartemw.staff_register.build_service.service.base.Banking_organization
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The implementation of the banking_organization local service.
@@ -47,7 +49,7 @@ public class Banking_organizationLocalServiceImpl
             super.addBanking_organization(banking_organization);
 
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[addBanking_organization] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -58,9 +60,9 @@ public class Banking_organizationLocalServiceImpl
             Banking_organization banking_organization = banking_organizationPersistence.findByPrimaryKey(position_directoryId);
             return deleteBanking_organization(banking_organization);
         } catch (NoSuchBanking_organizationException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteBanking_organization] пользователя с таким id не существует в базе данных: " + position_directoryId + "!");
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteBanking_organization] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -69,9 +71,9 @@ public class Banking_organizationLocalServiceImpl
         try {
             return banking_organizationPersistence.findByPrimaryKey(banking_organizationId);
         } catch (NoSuchBanking_organizationException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getBanking_organization] пользователя с таким id не существует в базе данных: " + banking_organizationId + "!");
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getBanking_organization] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -80,7 +82,7 @@ public class Banking_organizationLocalServiceImpl
         try {
             return banking_organizationPersistence.findAll();
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getBanking_organizationList] ошибка с подключением базы данных!");
         }
         return new ArrayList<Banking_organization>();
     }
@@ -97,7 +99,7 @@ public class Banking_organizationLocalServiceImpl
             super.updateBanking_organization(banking_organization);
 
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[updateBanking_organization] ошибка с подключением базы данных!");
         }
         return createEntity();
     }

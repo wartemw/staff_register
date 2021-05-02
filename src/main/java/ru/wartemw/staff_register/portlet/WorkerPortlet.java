@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WorkerPortlet extends MVCPortlet {
 
@@ -42,9 +44,13 @@ public class WorkerPortlet extends MVCPortlet {
         Date date_of_employment = null;
         try {
             date_of_birth = convert(date_of_birthString);
+        } catch (ParseException e) {
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[editWorker] ошибка с конвертации даты: " + date_of_birthString + "!");
+        }
+        try {
             date_of_employment = convert(date_of_employmentString);
         } catch (ParseException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[editWorker] ошибка с конвертации даты: " + date_of_employmentString + "!");
         }
 
         if (workerID != 0) {
@@ -82,9 +88,9 @@ public class WorkerPortlet extends MVCPortlet {
         try {
             WorkerLocalServiceUtil.deleteWorker(workerID);
         } catch (PortalException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteWorker] пользователя с таким id не существует в базе данных: " + workerID + "!");
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteWorker] ошибка с подключением базы данных!");
         }
     }
 

@@ -13,6 +13,8 @@ import ru.wartemw.staff_register.build_service.service.base.WorkerLocalServiceBa
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The implementation of the worker local service.
@@ -71,7 +73,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
 
             return super.addWorker(worker);
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[addWorker] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -82,9 +84,9 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
             Worker worker = workerPersistence.findByPrimaryKey(workerId);
             return super.deleteWorker(worker);
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteWorker] ошибка с подключением базы данных!");
         } catch (NoSuchWorkerException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deleteWorker] пользователя с таким id не существует в базе данных: " + workerId + "!");
         }
         return createEntity();
     }
@@ -93,9 +95,9 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
         try {
             return workerPersistence.findByPrimaryKey(workerId);
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getWorker] ошибка с подключением базы данных!");
         } catch (NoSuchWorkerException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getWorker] пользователя с таким id не существует в базе данных: " + workerId + "!");
         }
         return createEntity();
     }
@@ -106,7 +108,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
             worker.setArchival_status(!worker.getArchival_status());
             return super.updateWorker(worker);
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[changeWorkerArchivalStatus] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -130,7 +132,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
         try {
             return workerPersistence.findAll();
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getWorkerList] ошибка с подключением базы данных!");
         }
         return new ArrayList<Worker>();
     }
@@ -157,7 +159,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
             super.updateWorker(worker);
             return worker;
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[updateWorker] ошибка с подключением базы данных!");
         }
         return createEntity();
     }

@@ -8,6 +8,8 @@ import ru.wartemw.staff_register.build_service.service.base.Position_directoryLo
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The implementation of the position_directory local service.
@@ -46,7 +48,7 @@ public class Position_directoryLocalServiceImpl
             super.addPosition_directory(position_directory);
 
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[addPosition_directory] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -57,9 +59,9 @@ public class Position_directoryLocalServiceImpl
             Position_directory position_directory = position_directoryPersistence.findByPrimaryKey(position_directoryId);
             return deletePosition_directory(position_directory);
         } catch (NoSuchPosition_directoryException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deletePosition_directory] пользователя с таким id не существует в базе данных: " + position_directoryId + "!");
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[deletePosition_directory] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -68,9 +70,9 @@ public class Position_directoryLocalServiceImpl
         try {
             return position_directoryPersistence.findByPrimaryKey(position_directoryId);
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getPosition_directory] ошибка с подключением базы данных!");
         } catch (NoSuchPosition_directoryException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getPosition_directory] пользователя с таким id не существует в базе данных: " + position_directoryId + "!");
         }
         return createEntity();
     }
@@ -82,7 +84,7 @@ public class Position_directoryLocalServiceImpl
             super.updatePosition_directory(positionDirectory);
             return positionDirectory;
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[changePosition_directoryArchivalStatus] ошибка с подключением базы данных!");
         }
         return createEntity();
     }
@@ -91,7 +93,7 @@ public class Position_directoryLocalServiceImpl
         try {
             return position_directoryPersistence.findAll();
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[getPosition_directoryList] ошибка с подключением базы данных!");
         }
         return new ArrayList<Position_directory>();
     }
@@ -106,7 +108,7 @@ public class Position_directoryLocalServiceImpl
             super.updatePosition_directory(position_directory);
 
         } catch (SystemException e) {
-            //TODO добавить Logger
+            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "[updatePosition_directory] ошибка с подключением базы данных!");
         }
         return createEntity();
 
