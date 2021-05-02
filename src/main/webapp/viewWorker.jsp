@@ -4,7 +4,6 @@
 <%@ page import="ru.wartemw.staff_register.build_service.model.Position_directory" %>
 <%@ page import="ru.wartemw.staff_register.build_service.model.Banking_organization" %>
 <%@ page import="ru.wartemw.staff_register.build_service.service.Banking_organizationLocalServiceUtil" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="ru.wartemw.staff_register.build_service.model.Worker" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
@@ -17,7 +16,7 @@
 <portlet:defineObjects/>
 
 <%
-        Date date_of_birthIn = ParamUtil.getDate(request, "date_of_birthIn", new SimpleDateFormat("yyyy-MM-dd"));
+    Date date_of_birthIn = ParamUtil.getDate(request, "date_of_birthIn", new SimpleDateFormat("yyyy-MM-dd"));
     Date date_of_birthTo = ParamUtil.getDate(request, "date_of_birthTo", new SimpleDateFormat("yyyy-MM-dd"));
     String vio = ParamUtil.getString(request, "vio");
 

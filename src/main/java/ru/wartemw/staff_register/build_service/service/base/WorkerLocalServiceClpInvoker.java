@@ -65,8 +65,6 @@ public class WorkerLocalServiceClpInvoker {
     private String[] _methodParameterTypes54;
     private String _methodName55;
     private String[] _methodParameterTypes55;
-    private String _methodName56;
-    private String[] _methodParameterTypes56;
 
     public WorkerLocalServiceClpInvoker() {
         _methodName0 = "addWorker";
@@ -187,31 +185,27 @@ public class WorkerLocalServiceClpInvoker {
 
         _methodParameterTypes51 = new String[] { "long" };
 
-        _methodName52 = "getWorkerListFromOrPosition_directory";
+        _methodName52 = "getWorkerList";
 
-        _methodParameterTypes52 = new String[] { "long" };
+        _methodParameterTypes52 = new String[] {  };
 
-        _methodName53 = "getWorkerList";
+        _methodName53 = "updateWorker";
 
-        _methodParameterTypes53 = new String[] {  };
-
-        _methodName54 = "updateWorker";
-
-        _methodParameterTypes54 = new String[] {
+        _methodParameterTypes53 = new String[] {
                 "long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.util.Date", "long",
                 "java.util.Date", "long", "long", "long", "long", "boolean"
             };
 
-        _methodName55 = "filterByDate";
+        _methodName54 = "filterByDate";
 
-        _methodParameterTypes55 = new String[] {
+        _methodParameterTypes54 = new String[] {
                 "java.util.Date", "java.util.Date"
             };
 
-        _methodName56 = "filterByName";
+        _methodName55 = "filterByName";
 
-        _methodParameterTypes56 = new String[] { "java.lang.String" };
+        _methodParameterTypes55 = new String[] { "java.lang.String" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -357,16 +351,11 @@ public class WorkerLocalServiceClpInvoker {
 
         if (_methodName52.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
-            return WorkerLocalServiceUtil.getWorkerListFromOrPosition_directory(((Long) arguments[0]).longValue());
+            return WorkerLocalServiceUtil.getWorkerList();
         }
 
         if (_methodName53.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
-            return WorkerLocalServiceUtil.getWorkerList();
-        }
-
-        if (_methodName54.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
             return WorkerLocalServiceUtil.updateWorker(((Long) arguments[0]).longValue(),
                 (java.lang.String) arguments[1],
                 (java.lang.String) arguments[2],
@@ -381,14 +370,14 @@ public class WorkerLocalServiceClpInvoker {
                 ((Boolean) arguments[12]).booleanValue());
         }
 
-        if (_methodName55.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
+        if (_methodName54.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
             return WorkerLocalServiceUtil.filterByDate((java.util.Date) arguments[0],
                 (java.util.Date) arguments[1]);
         }
 
-        if (_methodName56.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
+        if (_methodName55.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
             return WorkerLocalServiceUtil.filterByName((java.lang.String) arguments[0]);
         }
 

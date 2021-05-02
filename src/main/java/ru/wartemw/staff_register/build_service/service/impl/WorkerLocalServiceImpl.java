@@ -1,5 +1,9 @@
 package ru.wartemw.staff_register.build_service.service.impl;
 
+import com.liferay.portal.kernel.dao.orm.Criterion;
+import com.liferay.portal.kernel.dao.orm.DynamicQuery;
+import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
+import com.liferay.portal.kernel.dao.orm.RestrictionsFactoryUtil;
 import com.liferay.portal.kernel.exception.SystemException;
 import ru.wartemw.staff_register.build_service.NoSuchWorkerException;
 import ru.wartemw.staff_register.build_service.model.Worker;
@@ -47,11 +51,10 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
     public Worker addWorker(String surname, String name, String patronymic, String gender, Date date_of_birth,
                             long position, Date date_of_employment, long salary_level, long work_number,
                             long telephone_number, long banking_organization, boolean archival_status) {
-        Worker worker = createEntity();
         try {
             long workerId = counterLocalService.increment(Worker.class.getName());
 
-            worker = workerPersistence.create(workerId);
+            Worker worker = workerPersistence.create(workerId);
 
             worker.setSurname(surname);
             worker.setName(name);
@@ -66,19 +69,18 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
             worker.setBanking_organizationID(banking_organization);
             worker.setArchival_status(archival_status);
 
-            super.addWorker(worker);
-
+            return super.addWorker(worker);
         } catch (SystemException e) {
             //TODO добавить Logger
         }
-        return worker;
+        return createEntity();
     }
 
     @Override
     public Worker deleteWorker(long workerId) {
         try {
             Worker worker = workerPersistence.findByPrimaryKey(workerId);
-            return deleteWorker(worker);
+            return super.deleteWorker(worker);
         } catch (SystemException e) {
             //TODO добавить Logger
         } catch (NoSuchWorkerException e) {
@@ -102,8 +104,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
         try {
             Worker worker = WorkerLocalServiceUtil.fetchWorker(workerId);
             worker.setArchival_status(!worker.getArchival_status());
-            super.updateWorker(worker);
-            return worker;
+            return super.updateWorker(worker);
         } catch (SystemException e) {
             //TODO добавить Logger
         }
@@ -111,27 +112,18 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
     }
 
     public List<Worker> getWorkerListFromPosition_directory(long position_directoryID) {
-        List<Worker> list = new ArrayList<Worker>();
+        try {
+            ClassLoader classLoader = workerPersistence.getClass().getClassLoader();
 
-        List<Worker> workerList = getWorkerList();
-        for (Worker worker : workerList) {
-            if (worker.getPosition_directoryID() == position_directoryID)
-                list.add(worker);
+            DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Worker.class, classLoader);
+            dynamicQuery.add(RestrictionsFactoryUtil.eq("position_directoryID", position_directoryID));
+
+            return WorkerLocalServiceUtil.dynamicQuery(dynamicQuery);
+        } catch (SystemException e) {
+            e.printStackTrace();
         }
 
-        return list;
-    }
-
-    public List<Worker> getWorkerListFromOrPosition_directory(long position_directoryID) {
-        List<Worker> list = new ArrayList<Worker>();
-
-        List<Worker> workerList = getWorkerList();
-        for (Worker worker : workerList) {
-            if (worker.getPosition_directoryID() != position_directoryID)
-                list.add(worker);
-        }
-
-        return list;
+        return new ArrayList<Worker>();
     }
 
     public List<Worker> getWorkerList() {
@@ -163,6 +155,7 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
             worker.setArchival_status(archival_status);
 
             super.updateWorker(worker);
+            return worker;
         } catch (SystemException e) {
             //TODO добавить Logger
         }
@@ -170,36 +163,39 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
     }
 
     public List<Worker> filterByDate(Date date_of_birthIn, Date date_of_birthTo) {
-        List<Worker> workerList = getWorkerList();
+        try {
+            ClassLoader classLoader = workerPersistence.getClass().getClassLoader();
 
-        List<Worker> resultList = new ArrayList<Worker>();
+            DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Worker.class, classLoader);
+            dynamicQuery.add(RestrictionsFactoryUtil.between("date_of_birth", date_of_birthIn, date_of_birthTo));
 
-        for (Worker worker : workerList) {
-            Date date_of_birth = worker.getDate_of_birth();
+            return WorkerLocalServiceUtil.dynamicQuery(dynamicQuery);
 
-            if (date_of_birth.after(date_of_birthIn) && date_of_birth.before(date_of_birthTo))
-                resultList.add(worker);
-
-            if (date_of_birth.equals(date_of_birthIn) || date_of_birth.equals(date_of_birthTo))
-                resultList.add(worker);
+        } catch (SystemException e) {
+            e.printStackTrace();
         }
 
-        return resultList;
+
+        return new ArrayList<Worker>();
     }
 
-    public List<Worker> filterByName(String name) {
-        List<Worker> workerList = WorkerLocalServiceUtil.getWorkerList();
+    public List<Worker> filterByName(String fullName) {
+        try {
+            ClassLoader classLoader = workerPersistence.getClass().getClassLoader();
 
-        List<Worker> resultList = new ArrayList<Worker>();
+            DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Worker.class, classLoader);
+            Criterion surname = RestrictionsFactoryUtil.ilike("surname", "%" + fullName + "%");
+            Criterion name1 = RestrictionsFactoryUtil.ilike("name", "%" + fullName + "%");
+            Criterion patronymic = RestrictionsFactoryUtil.ilike("patronymic", "%" + fullName + "%");
 
-        for (Worker worker : workerList) {
-            if (worker.getSurname().toLowerCase().contains(name.toLowerCase())
-                    || worker.getName().toLowerCase().contains(name.toLowerCase())
-                    || worker.getPatronymic().toLowerCase().contains(name.toLowerCase())) {
-                resultList.add(worker);
-            }
+            dynamicQuery.add(RestrictionsFactoryUtil.or(surname, RestrictionsFactoryUtil.or(name1, patronymic)));
+
+            return WorkerLocalServiceUtil.dynamicQuery(dynamicQuery);
+        } catch (SystemException e) {
+            e.printStackTrace();
         }
 
-        return resultList;
+
+        return new ArrayList<Worker>();
     }
 }

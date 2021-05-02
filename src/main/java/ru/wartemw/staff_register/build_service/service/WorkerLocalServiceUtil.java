@@ -291,12 +291,6 @@ public class WorkerLocalServiceUtil {
                    .getWorkerListFromPosition_directory(position_directoryID);
     }
 
-    public static java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerListFromOrPosition_directory(
-        long position_directoryID) {
-        return getService()
-                   .getWorkerListFromOrPosition_directory(position_directoryID);
-    }
-
     public static java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerList() {
         return getService().getWorkerList();
     }
@@ -320,8 +314,8 @@ public class WorkerLocalServiceUtil {
     }
 
     public static java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
-        java.lang.String name) {
-        return getService().filterByName(name);
+        java.lang.String fullName) {
+        return getService().filterByName(fullName);
     }
 
     public static void clearService() {

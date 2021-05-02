@@ -1,6 +1,3 @@
-<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.text.DateFormat" %>
 <%@ page import="ru.wartemw.staff_register.build_service.service.Banking_organizationLocalServiceUtil" %>
 <%@ page import="ru.wartemw.staff_register.build_service.model.Banking_organization" %>
 <%@ page import="java.util.List" %>

@@ -259,10 +259,6 @@ public interface WorkerLocalService extends BaseLocalService,
         long position_directoryID);
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerListFromOrPosition_directory(
-        long position_directoryID);
-
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerList();
 
     public ru.wartemw.staff_register.build_service.model.Worker updateWorker(
@@ -277,5 +273,5 @@ public interface WorkerLocalService extends BaseLocalService,
         java.util.Date date_of_birthIn, java.util.Date date_of_birthTo);
 
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
-        java.lang.String name);
+        java.lang.String fullName);
 }

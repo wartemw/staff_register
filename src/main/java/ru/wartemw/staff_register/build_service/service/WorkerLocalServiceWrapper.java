@@ -303,12 +303,6 @@ public class WorkerLocalServiceWrapper implements WorkerLocalService,
     }
 
     @Override
-    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerListFromOrPosition_directory(
-        long position_directoryID) {
-        return _workerLocalService.getWorkerListFromOrPosition_directory(position_directoryID);
-    }
-
-    @Override
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerList() {
         return _workerLocalService.getWorkerList();
     }
@@ -335,8 +329,8 @@ public class WorkerLocalServiceWrapper implements WorkerLocalService,
 
     @Override
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
-        java.lang.String name) {
-        return _workerLocalService.filterByName(name);
+        java.lang.String fullName) {
+        return _workerLocalService.filterByName(fullName);
     }
 
     /**

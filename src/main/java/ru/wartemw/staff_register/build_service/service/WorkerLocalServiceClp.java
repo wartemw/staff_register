@@ -60,8 +60,6 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
     private String[] _methodParameterTypes25;
     private String _methodName26;
     private String[] _methodParameterTypes26;
-    private String _methodName27;
-    private String[] _methodParameterTypes27;
 
     public WorkerLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -176,31 +174,27 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
 
         _methodParameterTypes22 = new String[] { "long" };
 
-        _methodName23 = "getWorkerListFromOrPosition_directory";
+        _methodName23 = "getWorkerList";
 
-        _methodParameterTypes23 = new String[] { "long" };
+        _methodParameterTypes23 = new String[] {  };
 
-        _methodName24 = "getWorkerList";
+        _methodName24 = "updateWorker";
 
-        _methodParameterTypes24 = new String[] {  };
-
-        _methodName25 = "updateWorker";
-
-        _methodParameterTypes25 = new String[] {
+        _methodParameterTypes24 = new String[] {
                 "long", "java.lang.String", "java.lang.String",
                 "java.lang.String", "java.lang.String", "java.util.Date", "long",
                 "java.util.Date", "long", "long", "long", "long", "boolean"
             };
 
-        _methodName26 = "filterByDate";
+        _methodName25 = "filterByDate";
 
-        _methodParameterTypes26 = new String[] {
+        _methodParameterTypes25 = new String[] {
                 "java.util.Date", "java.util.Date"
             };
 
-        _methodName27 = "filterByName";
+        _methodName26 = "filterByName";
 
-        _methodParameterTypes27 = new String[] { "java.lang.String" };
+        _methodParameterTypes26 = new String[] { "java.lang.String" };
     }
 
     @Override
@@ -836,35 +830,12 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
     }
 
     @Override
-    public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerListFromOrPosition_directory(
-        long position_directoryID) {
-        Object returnObj = null;
-
-        try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName23,
-                    _methodParameterTypes23,
-                    new Object[] { position_directoryID });
-        } catch (Throwable t) {
-            t = ClpSerializer.translateThrowable(t);
-
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            } else {
-                throw new RuntimeException(t.getClass().getName() +
-                    " is not a valid exception");
-            }
-        }
-
-        return (java.util.List<ru.wartemw.staff_register.build_service.model.Worker>) ClpSerializer.translateOutput(returnObj);
-    }
-
-    @Override
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> getWorkerList() {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName24,
-                    _methodParameterTypes24, new Object[] {  });
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23, new Object[] {  });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
@@ -890,8 +861,8 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName25,
-                    _methodParameterTypes25,
+            returnObj = _invokableLocalService.invokeMethod(_methodName24,
+                    _methodParameterTypes24,
                     new Object[] {
                         workerId,
                         
@@ -939,8 +910,8 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName26,
-                    _methodParameterTypes26,
+            returnObj = _invokableLocalService.invokeMethod(_methodName25,
+                    _methodParameterTypes25,
                     new Object[] {
                         ClpSerializer.translateInput(date_of_birthIn),
                         
@@ -962,13 +933,13 @@ public class WorkerLocalServiceClp implements WorkerLocalService {
 
     @Override
     public java.util.List<ru.wartemw.staff_register.build_service.model.Worker> filterByName(
-        java.lang.String name) {
+        java.lang.String fullName) {
         Object returnObj = null;
 
         try {
-            returnObj = _invokableLocalService.invokeMethod(_methodName27,
-                    _methodParameterTypes27,
-                    new Object[] { ClpSerializer.translateInput(name) });
+            returnObj = _invokableLocalService.invokeMethod(_methodName26,
+                    _methodParameterTypes26,
+                    new Object[] { ClpSerializer.translateInput(fullName) });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
 
