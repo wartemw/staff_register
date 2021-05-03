@@ -184,14 +184,16 @@ public class WorkerLocalServiceImpl extends WorkerLocalServiceBaseImpl {
     public List<Worker> filterByName(String fullName) {
         try {
             ClassLoader classLoader = workerPersistence.getClass().getClassLoader();
-
             DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(Worker.class, classLoader);
-            Criterion surname = RestrictionsFactoryUtil.ilike("surname", "%" + fullName + "%");
-            Criterion name1 = RestrictionsFactoryUtil.ilike("name", "%" + fullName + "%");
-            Criterion patronymic = RestrictionsFactoryUtil.ilike("patronymic", "%" + fullName + "%");
 
-            dynamicQuery.add(RestrictionsFactoryUtil.or(surname, RestrictionsFactoryUtil.or(name1, patronymic)));
+            for(String fillNameSplit:fullName.split(" ")) {
 
+                Criterion surname = RestrictionsFactoryUtil.ilike("surname", "%" + fillNameSplit + "%");
+                Criterion name1 = RestrictionsFactoryUtil.ilike("name", "%" + fillNameSplit + "%");
+                Criterion patronymic = RestrictionsFactoryUtil.ilike("patronymic", "%" + fillNameSplit + "%");
+
+                dynamicQuery.add(RestrictionsFactoryUtil.or(surname, RestrictionsFactoryUtil.or(name1, patronymic)));
+            }
             return WorkerLocalServiceUtil.dynamicQuery(dynamicQuery);
         } catch (SystemException e) {
             e.printStackTrace();
